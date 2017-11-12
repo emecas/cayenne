@@ -32,16 +32,16 @@ public class DbEntityCounterpartActionTest {
 	public void testViewCounterpartEntityObjEntity() {
 		target = new DbEntityCounterpartAction(null);
 		assertNotNull(target);
-		try{
+		//try{
 			target.viewCounterpartEntity(null);
-			fail("Expected NullPointerException");
-		}catch(NullPointerException npo){}
-		try{
+			//fail("Expected NullPointerException");
+		//}catch(NullPointerException npo){}
+		//try{
 			Application.setInstance(new Application());
 			ObjEntity oe = new ObjEntity("NAME");
 			target.viewCounterpartEntity(oe);
-			fail("Expected NullPointerException");
-		}catch(NullPointerException npo){}
+			//fail("Expected NullPointerException");
+		//}catch(NullPointerException npo){}
 	}
 
 }
