@@ -78,7 +78,11 @@ public class DbEntityCounterpartAction extends CayenneAction {
     }
     
     public void viewCounterpartEntity(ObjEntity entity) {
+    	if(entity==null)
+    		return;
         TreePath path = buildTreePath(entity);
+        if(path==null)
+        	return;
         editor().getProjectTreeView().getSelectionModel().setSelectionPath(path);
         
         EntityDisplayEvent event = new EntityDisplayEvent(
@@ -103,6 +107,8 @@ public class DbEntityCounterpartAction extends CayenneAction {
      * @return tree path
      */
     public static TreePath buildTreePath(Entity entity) {
+    	if(Application.getInstance()== null || Application.getInstance().getFrameController() == null)
+    		return null;
         DataChannelDescriptor domain = (DataChannelDescriptor) Application
                 .getInstance()
                 .getProject()

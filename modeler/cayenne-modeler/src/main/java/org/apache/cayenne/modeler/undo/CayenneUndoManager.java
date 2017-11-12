@@ -72,8 +72,9 @@ public class CayenneUndoManager extends javax.swing.undo.UndoManager {
 
     @Override
     public void undo() throws CannotUndoException {
-        UndoableEdit e = editToBeUndone();
-
+    	UndoableEdit e = editToBeUndone();
+    	if(e==null)
+    		return;
         if (e instanceof TextCompoundEdit) {
             TextCompoundEdit edit = (TextCompoundEdit) e;
 
@@ -85,12 +86,15 @@ public class CayenneUndoManager extends javax.swing.undo.UndoManager {
         } else {
         	if(e instanceof RemoveAttributeUndoableEdit)
         		focusObjEntity((RemoveAttributeUndoableEdit)e);
+        	
         	super.undo();
         }
         updateUI();
     }
 
     private void updateUI() {
+    	if(application==null)
+    		return;
         CayenneAction undoAction = application.getActionManager().getAction(UndoAction.class);
 
         CayenneAction redoAction = application.getActionManager().getAction(RedoAction.class);
