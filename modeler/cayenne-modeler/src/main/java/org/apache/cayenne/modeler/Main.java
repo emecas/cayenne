@@ -47,6 +47,9 @@ public class Main {
     private static Logger logger = LoggerFactory.getLogger(Main.class);
 
     protected String[] args;
+    
+    // TODO: use module auto-loading...
+    public Injector injector;
 
     /**
      * Main method that starts the CayenneModeler.
@@ -67,8 +70,7 @@ public class Main {
 
     protected void launch() {
 
-        // TODO: use module auto-loading...
-        final Injector injector = DIBootstrap.createInjector(appendModules(new ArrayList<Module>()));
+        injector = DIBootstrap.createInjector(appendModules(new ArrayList<Module>()));
 
         // init look and feel before using any Swing classes...
         injector.getInstance(PlatformInitializer.class).initLookAndFeel();

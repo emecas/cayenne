@@ -35,7 +35,22 @@ env:
 
 jdk:
   - oraclejdk8
-  - oraclejdk7
+
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+
+matrix:
+  include:
+    - jdk: oraclejdk-ea
+      env: DB_PROFILE=mysql-docker EXCLUDE_MODULES="-pl !docs/doc,!assembly"
+    - jdk: oraclejdk-ea
+      env: DB_PROFILE=postgres-docker EXCLUDE_MODULES="-pl !docs/doc,!assembly"
+    - jdk: oraclejdk-ea
+      env: DB_PROFILE=sqlserver-docker EXCLUDE_MODULES="-pl !docs/doc,!assembly"
+  allow_failures:
+    - jdk: oraclejdk-ea
 
 script:
   - mvn verify -q -DcayenneTestConnection=$DB_PROFILE -DcayenneLogLevel=ERROR

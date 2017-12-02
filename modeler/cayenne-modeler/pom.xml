@@ -106,6 +106,13 @@
 			<groupId>jgraph</groupId>
 			<artifactId>jgraph</artifactId>
 		</dependency>
+		
+		<dependency>
+		  <groupId>org.assertj</groupId>
+		  <artifactId>assertj-swing-junit</artifactId>
+		  <scope>test</scope>
+		</dependency>
+		
 	</dependencies>
 
     <profiles>
