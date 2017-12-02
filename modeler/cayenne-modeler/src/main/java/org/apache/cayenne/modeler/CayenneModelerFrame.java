@@ -44,6 +44,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
@@ -186,7 +187,13 @@ public class CayenneModelerFrame extends JFrame implements DataNodeDisplayListen
         JMenu toolMenu = new JMenu("Tools");
         JMenu helpMenu = new JMenu("Help");
 
-        fileMenu.setMnemonic(KeyEvent.VK_F);
+        fileMenu.setName("fileMenu");
+	editMenu.setName("editMenu");
+	projectMenu.setName("projectMenu");
+	toolMenu.setName("toolMenu");
+	helpMenu.setName("helpMenu");
+		
+	fileMenu.setMnemonic(KeyEvent.VK_F);
         editMenu.setMnemonic(KeyEvent.VK_E);
         projectMenu.setMnemonic(KeyEvent.VK_P);
         toolMenu.setMnemonic(KeyEvent.VK_T);
@@ -218,11 +225,20 @@ public class CayenneModelerFrame extends JFrame implements DataNodeDisplayListen
         projectMenu.add(getAction(ValidateAction.class).buildMenu());
         projectMenu.addSeparator();
         projectMenu.add(getAction(CreateNodeAction.class).buildMenu());
-        projectMenu.add(getAction(CreateDataMapAction.class).buildMenu());
-
-        projectMenu.add(getAction(CreateObjEntityAction.class).buildMenu());
-        projectMenu.add(getAction(CreateEmbeddableAction.class).buildMenu());
-        projectMenu.add(getAction(CreateDbEntityAction.class).buildMenu());
+	
+	JMenuItem newDataMapMenuItem =  getAction(CreateDataMapAction.class).buildMenu();
+	newDataMapMenuItem.setName("newDataMapMenuItem");
+	projectMenu.add(newDataMapMenuItem);
+	
+	JMenuItem newObjEntityMenuItem =  getAction(CreateObjEntityAction.class).buildMenu();
+	newObjEntityMenuItem.setName("newObjEntityMenuItem");
+	projectMenu.add(newObjEntityMenuItem);
+	
+	projectMenu.add(getAction(CreateEmbeddableAction.class).buildMenu());
+        
+	JMenuItem newDbEntityMenuItem = getAction(CreateDbEntityAction.class).buildMenu();
+	newDbEntityMenuItem.setName("newDbEntityMenuItem");
+	projectMenu.add(newDbEntityMenuItem);
 
         projectMenu.add(getAction(CreateProcedureAction.class).buildMenu());
         projectMenu.add(getAction(CreateQueryAction.class).buildMenu());
