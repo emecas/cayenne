@@ -19,8 +19,6 @@
 
 package org.apache.cayenne.modeler;
 
-<<<<<<< HEAD
-=======
 import java.awt.AWTEvent;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -52,7 +50,6 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
->>>>>>> Adding Functional GUI Testing for Modeler
 import org.apache.cayenne.modeler.action.AboutAction;
 import org.apache.cayenne.modeler.action.ActionManager;
 import org.apache.cayenne.modeler.action.ConfigurePreferencesAction;
