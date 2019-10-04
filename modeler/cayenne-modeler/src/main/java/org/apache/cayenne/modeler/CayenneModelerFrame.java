@@ -19,6 +19,37 @@
 
 package org.apache.cayenne.modeler;
 
+import java.awt.AWTEvent;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.List;
+import java.util.Vector;
+
+import javax.swing.Action;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
+
 import org.apache.cayenne.modeler.action.AboutAction;
 import org.apache.cayenne.modeler.action.ActionManager;
 import org.apache.cayenne.modeler.action.ConfigurePreferencesAction;
@@ -184,7 +215,13 @@ public class CayenneModelerFrame extends JFrame implements DataNodeDisplayListen
         JMenu toolMenu = new JMenu("Tools");
         JMenu helpMenu = new JMenu("Help");
 
-        fileMenu.setMnemonic(KeyEvent.VK_F);
+        fileMenu.setName("fileMenu");
+	editMenu.setName("editMenu");
+	projectMenu.setName("projectMenu");
+	toolMenu.setName("toolMenu");
+	helpMenu.setName("helpMenu");
+		
+	fileMenu.setMnemonic(KeyEvent.VK_F);
         editMenu.setMnemonic(KeyEvent.VK_E);
         projectMenu.setMnemonic(KeyEvent.VK_P);
         toolMenu.setMnemonic(KeyEvent.VK_T);
@@ -216,11 +253,20 @@ public class CayenneModelerFrame extends JFrame implements DataNodeDisplayListen
         projectMenu.add(getAction(ValidateAction.class).buildMenu());
         projectMenu.addSeparator();
         projectMenu.add(getAction(CreateNodeAction.class).buildMenu());
-        projectMenu.add(getAction(CreateDataMapAction.class).buildMenu());
-
-        projectMenu.add(getAction(CreateObjEntityAction.class).buildMenu());
-        projectMenu.add(getAction(CreateEmbeddableAction.class).buildMenu());
-        projectMenu.add(getAction(CreateDbEntityAction.class).buildMenu());
+	
+	JMenuItem newDataMapMenuItem =  getAction(CreateDataMapAction.class).buildMenu();
+	newDataMapMenuItem.setName("newDataMapMenuItem");
+	projectMenu.add(newDataMapMenuItem);
+	
+	JMenuItem newObjEntityMenuItem =  getAction(CreateObjEntityAction.class).buildMenu();
+	newObjEntityMenuItem.setName("newObjEntityMenuItem");
+	projectMenu.add(newObjEntityMenuItem);
+	
+	projectMenu.add(getAction(CreateEmbeddableAction.class).buildMenu());
+        
+	JMenuItem newDbEntityMenuItem = getAction(CreateDbEntityAction.class).buildMenu();
+	newDbEntityMenuItem.setName("newDbEntityMenuItem");
+	projectMenu.add(newDbEntityMenuItem);
 
         projectMenu.add(getAction(CreateProcedureAction.class).buildMenu());
         projectMenu.add(getAction(CreateQueryAction.class).buildMenu());

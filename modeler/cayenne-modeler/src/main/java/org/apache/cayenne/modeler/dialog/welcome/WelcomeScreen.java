@@ -99,6 +99,8 @@ public class WelcomeScreen extends JScrollPane implements RecentFileListListener
     private void initFileListPane() {
         JPanel fileListPanel = new BackgroundPanel("welcome/welcome-screen-right-bg.jpg");
 
+        fileListPanel.setName("fileListPanel");
+        
         final int padding = 20;
         recentProjectsList = new JList<>();
         recentProjectsList.setOpaque(false);
@@ -108,6 +110,8 @@ public class WelcomeScreen extends JScrollPane implements RecentFileListListener
                 fileListPanel.getHeight() - 2 * padding
         );
         recentProjectsList.setCellRenderer(new RecentFileListRenderer(recentProjectsList, this));
+        
+        recentProjectsList.setName("recentProjectsList");
 
         fileListPanel.add(recentProjectsList);
         mainPanel.add(fileListPanel);
