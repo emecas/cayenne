@@ -67,33 +67,33 @@ public class MainTest {
 		
 		JListFixture wl =  window.list("recentProjectsList");
 		assertNotNull(wl);
-		if(wl.target().getModel().getSize() > 0){
- 			wl.clickItem(0);
- 			delay(3);
- 		}
- 		else{
-			JMenuItemFixture newProjectMenuItemFixture = window.menuItem("newProjectMenuItem");
-			newProjectMenuItemFixture.click();
- 			delay(3);
- 		}
-		//new Main(args).launch()
-		JMenuItemFixture newDataMapMenuItemFixture = window.menuItem("newDataMapMenuItem");
-		JMenuItemFixture objEntityMenuItemFixture = window.menuItem("newObjEntityMenuItem");
-		JMenuItemFixture dbEntityMenuItemFixture = window.menuItem("newDbEntityMenuItem");
-		newDataMapMenuItemFixture.click();
-		delay(1);
-		objEntityMenuItemFixture.click();
-		delay(1);
-		objEntityMenuItemFixture.click();
-		delay(1);
-		objEntityMenuItemFixture.click();
-		delay(1);
-		dbEntityMenuItemFixture.click();
-		delay(1);
-		dbEntityMenuItemFixture.click();
-		delay(1);
-		dbEntityMenuItemFixture.click();
-		delay(3);
+//		if(wl.target().getModel().getSize() > 0){
+// 			wl.clickItem(0);
+// 			delay(3);
+// 		}
+// 		else{
+//			JMenuItemFixture newProjectMenuItemFixture = window.menuItem("newProjectMenuItem");
+//			newProjectMenuItemFixture.click();
+// 			delay(3);
+// 		}
+//		//new Main(args).launch()
+//		JMenuItemFixture newDataMapMenuItemFixture = window.menuItem("newDataMapMenuItem");
+//		JMenuItemFixture objEntityMenuItemFixture = window.menuItem("newObjEntityMenuItem");
+//		JMenuItemFixture dbEntityMenuItemFixture = window.menuItem("newDbEntityMenuItem");
+//		newDataMapMenuItemFixture.click();
+//		delay(1);
+//		objEntityMenuItemFixture.click();
+//		delay(1);
+//		objEntityMenuItemFixture.click();
+//		delay(1);
+//		objEntityMenuItemFixture.click();
+//		delay(1);
+//		dbEntityMenuItemFixture.click();
+//		delay(1);
+//		dbEntityMenuItemFixture.click();
+//		delay(1);
+//		dbEntityMenuItemFixture.click();
+//		delay(3);
 	}
 
 	private void delay(int seconds) {
